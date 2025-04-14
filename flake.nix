@@ -32,6 +32,7 @@
             ./disk-config/mac-mini.nix # Declare disk mounts and boot config.
             ./service-config/docker/containerd.nix # Configure docker daemon.
             ./service-config/docker/micboard.nix # Run Micboard with docker via systemd.
+            ./service-config/UI/micboard-kiosk.nix # Run a basic Cage session with epiphany. Allows micboard to just be the mac and a display.
         ];
       };
     };
