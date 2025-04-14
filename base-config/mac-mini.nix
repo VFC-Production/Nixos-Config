@@ -1,16 +1,31 @@
 { outputs, inputs, lib, config, pkgs, modulesPath, ... }:{
   imports = [ 
-    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/installer/scan/not-detected.nix") # Pick up kernel modules/drivers that aren't already under boot.initrd
     ];
 
-  networking.networkmanager.enable = true;
-  time.timeZone = "America/New_York";
+  networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
+
+  time.timeZone = "America/New_York"; # Set Timezone
 
 
   nix = {
+# I've been deploying with flakes
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes 
     '';
+  };
+
+# Define a user
+  users.users = {
+
+    user = {
+      isNormalUser = true;
+      home = "/home/user";
+      description  = "general system user";
+      uid = 1000; 
+      extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
+      hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1"; #  mkpasswd
+    };
   };
 
   system.stateVersion = "24.11";

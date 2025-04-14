@@ -32,21 +32,21 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                 subvolumes = {
-                  "/docker-commpose" = {
+                  "/docker-commpose" = { # Optional, incase we want to deploy compose projects out-of-band.
                       mountOptions = [ "compress=zstd" "noexec" "ro" ];
                       mountpoint = "/docker-compose"
                   };
-                  "/system-data" = {
+                  "/system-data" = { # Store docker and system states here
                       mountOptions = [ "compress=zstd" "noexec" ];
                       mountpoint = "/system-data";
                   };
-                  "/nix" = {
+                  "/nix" = { # Nix store, needed for boot
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
-                  "/docker" = {
+                  "/docker" = { # Docker daemon data dir
                       mountOptions = [ "compress=zstd" "noatime" ];
-                      mountpoint = "/var/lib/docker";
+                      mountpoint = "/docker-data";
                   };
                 };
               };
@@ -55,7 +55,7 @@
         };
       };
     };
-    nodev."/" = {
+    nodev."/" = { # Root-as-tmpfs
       fsType = "tmpfs";
       mountOptions = [
         "size=512M"
@@ -63,7 +63,7 @@
         "mode=755"
       ];
     };
-    nodev."/home/user" = {
+    nodev."/home/user" = { # Home-as-tmpfs
       fsType = "tmpfs";
       mountOptions = [
         "size=1G"
@@ -74,9 +74,12 @@
       ];
     };
   };
+  # Ensure our filesystems exist before booting stage-2?
+  fileSystems."/docker-data".neededForBoot = true;
   fileSystems."/docker-compose".neededForBoot = true;
   fileSystems."/system-data".neededForBoot = true;
-  environment.persistence."/system-data" = {
+  # These are directories we need to keep
+  environment.persistence."/system-data/systemState" = {
     enable = true; 
     hideMounts = true;
     directories = [
@@ -94,7 +97,9 @@
       { file = "/etc/ssh/ssh_host_ed25519_key.pub"; parentDirectory = { mode = "u=rwx,g=r,o=r"; }; }
     ];
   };
-    boot.loader = {
+  
+# I really enjoy systemd-boot, but this ensures everything looks/feels the same between legacy and uefi systems.
+  boot.loader = {
     efi = {
         canTouchEfiVariables = true;
     };
