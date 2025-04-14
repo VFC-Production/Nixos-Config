@@ -46,6 +46,17 @@
         services.tailscale.enable = true; #
         users.users.user.hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1"; #  mkpasswd
         systemd.services."cage@".enable = lib.mkForce "false"; # Force Disable Cage UI.
+        services.openssh = {
+          enable = true;
+          ports = [ 22 ];
+          settings = {
+            PasswordAuthentication = true;
+            AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+            UseDns = true;
+            X11Forwarding = false;
+            PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+          };
+        };
       };
     };
   }; 
