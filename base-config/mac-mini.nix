@@ -7,7 +7,8 @@
     runtime = {
       inheritParentConfig = false;
       configuration = {
-        networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
+          networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
+           nix.allowedUsers = []; #No access to nix
 
           time.timeZone = "America/New_York"; # Set Timezone
 
@@ -43,7 +44,8 @@
     };
     Maintenance Mode = {
       configuration = {
-        services.tailscale.enable = true; #
+        nix.allowedUsers = [ "@wheel" ];
+        services.tailscale.enable = true; #vpn access
         users.users.user.hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1"; #  mkpasswd
         systemd.services."cage@".enable = lib.mkForce "false"; # Force Disable Cage UI.
         services.openssh = {
