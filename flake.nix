@@ -42,7 +42,7 @@
               system.stateVersion = config.system.nixos.version;
               # Adjust this to your liking.
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
-              disko.devices.disk.main.imageSize = "10G";
+              disko.devices.disk.system.imageSize = "10G";
             })
             ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
             ./disk-config/mac-mini.nix # Declare disk mounts and boot config.
