@@ -1,9 +1,5 @@
 
 { outputs, inputs, lib, config, pkgs, ... }:{
-  specialisation = {
-    runtime = {
-      inheritParentConfig = false;
-      configuration = {
           networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
            nix.allowedUsers = []; #No access to nix
 
@@ -17,16 +13,7 @@
             '';
           };
 
-      users.users = {
-        user = {
-          isNormalUser = true;
-          home = "/home/user";
-          description  = "user for ssh access";
-          uid = 1000; 
-          extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
-          hashedPassword = "";
-        };
-      };
+
 
           boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
           boot.initrd.kernelModules = [ ];
@@ -35,10 +22,6 @@
 
           nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
           hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-      };
-    };
-    Maintenance_Mode = {
-      configuration = {
         nix.allowedUsers = [ "@wheel" ];
         services.tailscale.enable = true; #vpn access
       users.users = {
@@ -63,7 +46,4 @@
             PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
           };
         };
-      };
-    };
-  }; 
-}
+      }
