@@ -21,9 +21,12 @@
           };
 
         # Define a user
+          
           user.grous.user = {};
           users.users = {
-
+            garbo = {
+              isSystemUser = true; 
+            };
             user = {
               isNormalUser = true;
               group = "user";
