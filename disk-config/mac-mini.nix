@@ -101,9 +101,9 @@
   
 # I really enjoy systemd-boot, but this ensures everything looks/feels the same between legacy and uefi systems.
   boot.loader = {
+    efiInstallAsRemovable = true;
     efi = {
         canTouchEfiVariables = true;
-        efiInstallAsRemovable = true;
     };
     grub = {
         enable = true;
