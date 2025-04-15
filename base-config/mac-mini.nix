@@ -21,7 +21,6 @@
           };
 
       users.users = {
-
         user = {
           isNormalUser = true;
           home = "/home/user";
@@ -46,7 +45,16 @@
       configuration = {
         nix.allowedUsers = [ "@wheel" ];
         services.tailscale.enable = true; #vpn access
-        users.users.serviceRunner.hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1"; #  mkpasswd
+      users.users = {
+        user = {
+          isNormalUser = true;
+          home = "/home/user";
+          description  = "user for ssh access";
+          uid = 1000; 
+          extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
+          hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1";
+        };
+      };
         systemd.services."cage@".enable = lib.mkForce "false"; # Force Disable Cage UI.
         services.openssh = {
           enable = true;
