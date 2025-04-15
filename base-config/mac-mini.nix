@@ -42,7 +42,7 @@
           hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
       };
     };
-    Maintenance Mode = {
+    Maintenance_Mode = {
       configuration = {
         nix.allowedUsers = [ "@wheel" ];
         services.tailscale.enable = true; #vpn access
