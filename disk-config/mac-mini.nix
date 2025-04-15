@@ -74,6 +74,14 @@
     #  ];
     #};
   };
+
+
+  fileSystems."/" = { # Weird alternative to the above, but whatever
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=512M" "mode=755" ];
+  };
+
   # Ensure our filesystems exist before booting stage-2?
   fileSystems."/docker-data".neededForBoot = true;
   fileSystems."/docker-compose".neededForBoot = true;
