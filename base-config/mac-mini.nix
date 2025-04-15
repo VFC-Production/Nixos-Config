@@ -21,10 +21,12 @@
           };
 
         # Define a user
+          user.grous.user = {};
           users.users = {
 
             user = {
               isNormalUser = true;
+              group = "user";
               home = "/home/user";
               description  = "general system user";
               uid = 1000; 
