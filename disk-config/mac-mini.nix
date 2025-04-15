@@ -58,7 +58,7 @@
     nodev."/" = { # Root-as-tmpfs
       fsType = "tmpfs";
       mountOptions = [
-        "size=512M"
+        "size=1GM"
         "defaults"
         "mode=755"
       ];
@@ -73,13 +73,6 @@
     #    "noexec"
     #  ];
     #};
-  };
-
-
-  fileSystems."/" = { # Weird alternative to the above, but whatever
-    device = "none";
-    fsType = "tmpfs";
-    options = [ "defaults" "size=512M" "mode=755" ];
   };
 
   # Ensure our filesystems exist before booting stage-2?
