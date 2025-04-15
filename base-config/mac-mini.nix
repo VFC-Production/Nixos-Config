@@ -22,17 +22,15 @@
 
         # Define a user
           
-          user.grous.user = {};
+          user.groups.user = {};
           users.users = {
-            garbo = {
-              isSystemUser = true; 
-            };
+
             user = {
               isNormalUser = true;
               group = "user";
               home = "/home/user";
               description  = "general system user";
-              uid = 1000; 
+              uid = 1001; 
               extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
             };
           };
