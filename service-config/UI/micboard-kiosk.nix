@@ -32,7 +32,7 @@
     restartIfChanged = false;
     serviceConfig = {
       ExecStart = "${pkgs.cage}/bin/cage -d -- ${pkgs.epiphany}/bin/epiphany 127.0.0.1:8058"; #Just open micboard
-      User = "user";
+      User = "serviceRunner";
 
       # ConditionPathExists = "/dev/tty0";
       IgnoreSIGPIPE = "no";
