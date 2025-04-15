@@ -1,10 +1,11 @@
 
 { outputs, inputs, lib, config, pkgs, modulesPath, ... }:{
-  imports = [ 
-    (modulesPath + "/installer/scan/not-detected.nix") # Pick up kernel modules/drivers that aren't already under boot.initrd
-    ];
+
   specialisation = {
     runtime = {
+      imports = [ 
+        ../disk-config/mac-mini.nix
+        ];
       inheritParentConfig = false;
       configuration = {
           networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
