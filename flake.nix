@@ -39,7 +39,6 @@
             disko.nixosModules.disko
             ({ config, ... }: {
               # shut up state version warning
-              system.stateVersion = "25.05";
               # Adjust this to your liking.
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
               disko.devices.disk.system.imageSize = "10G";
