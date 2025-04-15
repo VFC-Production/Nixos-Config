@@ -114,10 +114,8 @@
                   version = 3;
               };
             };
-          }
-
+          };
         };
-      };
       Maintenance_Mode = {
         configuration = {
           disko.devices = {
@@ -226,9 +224,9 @@
                   version = 3;
               };
             };
-          }
+          };
 
         };
       };
-  }; 
-}
+  }
+
