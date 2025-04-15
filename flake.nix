@@ -43,8 +43,8 @@
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
               disko.devices.disk.system.imageSize = "10G";
             })
-            ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
             ./disk-config/mac-mini.nix # Declare disk mounts and boot config.
+            ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
             ./service-config/docker/containerd.nix # Configure docker daemon.
             ./service-config/docker/micboard.nix # Run Micboard with docker via systemd.
             ./service-config/UI/micboard-kiosk.nix # Run a basic Cage session with epiphany. Allows micboard to just be the mac and a display.
