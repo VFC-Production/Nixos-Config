@@ -31,6 +31,7 @@
               extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
             };
           };
+          users.groups.serviceRunner = {};
 
           system.stateVersion = "24.11";
           boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
