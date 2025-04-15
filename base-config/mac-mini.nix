@@ -32,7 +32,7 @@
         };
       };
 
-          system.stateVersion = "25.05";
+          system.stateVersion = lib.mkForce "25.05";
           boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
           boot.initrd.kernelModules = [ ];
           boot.kernelModules = [ "kvm-intel" ];
