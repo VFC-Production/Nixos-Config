@@ -2,7 +2,7 @@
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.impermanence.nixosModules.impermanence
-    inputs.disko.nixosModules.disko
+      inputs.disko.nixosModules.disko
     ];
   disko.devices = {
     disk = {
