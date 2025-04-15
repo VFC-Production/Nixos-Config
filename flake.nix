@@ -32,7 +32,7 @@
             ({ config, ... }: {
               # shut up state version warning
               nixpkgs.system = "x86_64-linux";
-              system.stateVersion = config.system.nixos.version;
+              system.stateVersion = 24.11;
               # Adjust this to your liking.
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
             })
