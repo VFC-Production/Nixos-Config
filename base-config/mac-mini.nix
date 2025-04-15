@@ -2,8 +2,6 @@
 { outputs, inputs, lib, config, pkgs, modulesPath, ... }:{
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix") # Pick up kernel modules/drivers that aren't already under boot.initrd
-    inputs.impermanence.nixosModules.impermanence
-    inputs.disko.nixosModules.disko
     ];
   specialisation = {
     runtime = {
@@ -33,7 +31,6 @@
         };
       };
 
-          system.stateVersion = lib.mkForce "25.05";
           boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
           boot.initrd.kernelModules = [ ];
           boot.kernelModules = [ "kvm-intel" ];
