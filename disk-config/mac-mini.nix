@@ -34,7 +34,7 @@
                 subvolumes = {
                   "/docker-commpose" = { # Optional, incase we want to deploy compose projects out-of-band.
                       mountOptions = [ "compress=zstd" "noexec" "ro" ];
-                      mountpoint = "/docker-compose"
+                      mountpoint = "/docker-compose";
                   };
                   "/system-data" = { # Store docker and system states here
                       mountOptions = [ "compress=zstd" "noexec" ];
