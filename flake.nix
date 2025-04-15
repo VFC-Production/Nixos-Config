@@ -28,7 +28,7 @@
       micboard = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-            disko.nixosModules.disko
+            inputs.disko.nixosModules.disko
             ({ config, ... }: {
               # shut up state version warning
               system.stateVersion = config.system.nixos.version;
