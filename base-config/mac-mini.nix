@@ -23,7 +23,7 @@
         # Define a user
           users.users = {
             serviceRunner = {
-              isSystemUser = true;
+              #isSystemUser = true;
               group = "serviceRunner";
               home = "/home/serviceRunner";
               description  = "general system user";
