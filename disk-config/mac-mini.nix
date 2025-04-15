@@ -58,21 +58,21 @@
     nodev."/" = { # Root-as-tmpfs
       fsType = "tmpfs";
       mountOptions = [
-        "size=1GM"
+        "size=512MGM"
         "defaults"
         "mode=755"
       ];
     };
-    #nodev."/home/user" = { # Home-as-tmpfs
-    #  fsType = "tmpfs";
-    #  mountOptions = [
-    #    "size=1G"
-    #    "user"
-    #    "defaults"
-    #    "mode=1777"
-    #    "noexec"
-    #  ];
-    #};
+    nodev."/home/user" = { # Home-as-tmpfs
+      fsType = "tmpfs";
+      mountOptions = [
+        "size=1G"
+        "user"
+        "defaults"
+        "mode=1777"
+        "noexec"
+      ];
+    };
   };
 
   # Ensure our filesystems exist before booting stage-2?
