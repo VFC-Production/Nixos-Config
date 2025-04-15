@@ -1,11 +1,7 @@
 
-{ outputs, inputs, lib, config, pkgs, modulesPath, ... }:{
-
+{ outputs, inputs, lib, config, pkgs, ... }:{
   specialisation = {
     runtime = {
-      imports = [ 
-        ../disk-config/mac-mini.nix
-        ];
       inheritParentConfig = false;
       configuration = {
           networking.networkmanager.enable = true; # NMTUI is dumb easy to use.
