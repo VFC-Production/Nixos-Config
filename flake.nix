@@ -35,6 +35,7 @@
               system.stateVersion = "24.11";
               # Adjust this to your liking.
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
+              disko.devices.disk.system.device = "/dev/sda";
             })
             ./disk-config/mac-mini.nix
             ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
