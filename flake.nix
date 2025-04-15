@@ -34,6 +34,7 @@
               # Adjust this to your liking.
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
               disko.devices.disk.main.imageSize = "16G";
+              nixpkgs.system = "x86_64-linux";
             })
             ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
             ./disk-config/mac-mini.nix # Declare disk mounts and boot config.
