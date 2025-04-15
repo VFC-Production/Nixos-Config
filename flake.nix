@@ -28,6 +28,8 @@
       micboard = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+            system.stateVersion = config.system.nixos.version;
+            disko.devices.disk.main.imageSize = "16G";
             ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
             ./disk-config/mac-mini.nix # Declare disk mounts and boot config.
             ./service-config/docker/containerd.nix # Configure docker daemon.
