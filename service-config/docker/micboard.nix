@@ -8,7 +8,7 @@
       volumes = [ # Mount config so state persists reboots
         "/system-data/serviceState/:/root/.local/share/micboard"
       ];
-      estraOptions = "--network=host"; #Just let the container access host ports. Probably need this to pick up telemetry anyways.
+      extraOptions = "--network=host"; #Just let the container access host ports. Probably need this to pick up telemetry anyways.
     };
   };
 }
