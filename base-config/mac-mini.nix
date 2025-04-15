@@ -23,11 +23,11 @@
         # Define a user
           users.users = {
             serviceRunner = {
-              #isSystemUser = true;
+              isSystemUser = lib.mkForce true;
               group = "serviceRunner";
               home = "/home/serviceRunner";
               description  = "general system user";
-              uid = 911; 
+              uid = 1000; 
               extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
             };
           };
