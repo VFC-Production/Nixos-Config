@@ -23,11 +23,11 @@
         # Define a user
           users.users = {
             serviceRunner = {
-              isNormalUser = true;
+              isSystemUser = true;
               group = "serviceRunner";
               home = "/home/serviceRunner";
               description  = "general system user";
-              uid = 1001; 
+              uid = 911; 
               extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
             };
           };
