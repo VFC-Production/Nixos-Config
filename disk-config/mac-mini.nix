@@ -58,7 +58,7 @@
     nodev."/" = { # Root-as-tmpfs
       fsType = "tmpfs";
       mountOptions = [
-        "size=512MB"
+        "size=512M"
         "defaults"
         "mode=755"
       ];
