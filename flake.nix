@@ -40,6 +40,9 @@
             ({ config, ... }: {
               # shut up state version warning
               # Adjust this to your liking.
+              disko.devices.disk.system.device = "/dev/sda";
+              boot.loader.grub.device = "/dev/sda";
+
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
               #disko.devices.disk.system.imageSize = "10G";
             })
@@ -64,6 +67,8 @@
             ({ config, ... }: {
               # shut up state version warning
               # Adjust this to your liking.
+              disko.devices.disk.system.device = "/dev/sda";
+              boot.loader.grub.device = "/dev/sda";
               # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
               #disko.devices.disk.system.imageSize = "10G";
             })
