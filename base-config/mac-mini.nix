@@ -33,7 +33,6 @@
           hashedPassword = "$y$j9T$gfos6aXIGxx6T9SZXIGft/$CuCPpN0BGI.YGe3qsrnZyMSXgDyP6uIVPpACXsXZyY1";
         };
       };
-        systemd.services."cage@".enable = lib.mkForce false; # Force Disable Cage UI.
         services.openssh = {
           enable = true;
           ports = [ 22 ];
