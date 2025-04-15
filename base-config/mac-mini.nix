@@ -2,6 +2,8 @@
 { outputs, inputs, lib, config, pkgs, modulesPath, ... }:{
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix") # Pick up kernel modules/drivers that aren't already under boot.initrd
+    inputs.impermanence.nixosModules.impermanence
+    inputs.disko.nixosModules.disko
     ];
   specialisation = {
     runtime = {
