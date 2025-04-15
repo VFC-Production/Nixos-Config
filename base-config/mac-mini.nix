@@ -20,18 +20,17 @@
             '';
           };
 
-        # Define a user
-          users.users = {
-            serviceRunner = {
-              isSystemUser = lib.mkForce true;
-              group = "serviceRunner";
-              home = "/home/serviceRunner";
-              description  = "general system user";
-              uid = 1000; 
-              extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
-            };
-          };
-          users.groups.serviceRunner = {};
+      users.users = {
+
+        user = {
+          isNormalUser = true;
+          home = "/home/user";
+          description  = "user for ssh access";
+          uid = 1000; 
+          extraGroups = [ "wheel" "docker" "networkmanager" "storage" ]; 
+          hashedPassword = "";
+        };
+      };
 
           system.stateVersion = "24.11";
           boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
