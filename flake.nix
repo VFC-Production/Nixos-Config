@@ -31,6 +31,13 @@
       micboard = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+            ({ config, ... }: {
+              # shut up state version warning
+              nixpkgs.system = "x86_64-linux";
+              system.stateVersion = config.system.nixos.version;
+              # Adjust this to your liking.
+              # WARNING: if you set a too low value the image might be not big enough to contain the nixos installation
+            })
             disko.nixosModules.disko
             disko-images.nixosModules.disko-images
             ./base-config/mac-mini.nix # Base system config. Meant to be extended with below lines.
