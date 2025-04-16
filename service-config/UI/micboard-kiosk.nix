@@ -52,6 +52,9 @@
       StandardError = "syslog";
       # Set up a full (custom) user session for the user, required by Cage.
       PAMName = "cage";
+      AmbientCapabilities = "CAP_SYS_NICE";
+      #CapabilityBoundingSet = "CAP_SYS_NICE";
+      NoNewPrivileges = true;
     };
   };
 
