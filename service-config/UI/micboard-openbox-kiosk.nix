@@ -8,12 +8,15 @@ let
     # End all lines with '&' to not halt startup script execution
 
     # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
-    firefox --kiosk http://localhost:8058/ &
+    sleep 5 && firefox --kiosk http://localhost:8058/ &
   '';
 
   inherit (pkgs) writeScript;
 in {
   environment.systemPackages = [ pkgs.firefox ];
+  boot.kernelParams = [ "quiet" ];
+  boot.loader.timeout = lib.mkForce 0;
+  boot.plymouth.enable = true;
 
   # Configure X11
   services.xserver = {
