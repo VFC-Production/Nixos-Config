@@ -8,7 +8,7 @@
   services.dbus.enable = true;
 
 # Fonts, icons
-  environment.systemPackages = [ pkgs.hicolor-icon-theme ];
+  environment.systemPackages = [ pkgs.hicolor-icon-theme pkgs.cage ];
 
   fonts.enableDefaultFonts = true;
   xdg.icons.enable = true;
