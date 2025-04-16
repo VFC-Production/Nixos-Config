@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   kioskUsername = "user";
@@ -15,7 +15,7 @@ let
 in {
   environment.systemPackages = [ pkgs.firefox ];
   boot.kernelParams = [ "quiet" ];
-  boot.loader.timeout = lib.mkForce 0;
+  boot.loader.timeout = lib.mkForce 1;
   boot.plymouth.enable = true;
 
   # Configure X11
