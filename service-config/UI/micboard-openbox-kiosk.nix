@@ -13,6 +13,8 @@ let
 
   inherit (pkgs) writeScript;
 in {
+  environment.systemPackages = [ pkgs.firefox ];
+
   # Configure X11
   services.xserver = {
     enable = true;
