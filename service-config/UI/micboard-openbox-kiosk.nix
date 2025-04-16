@@ -9,11 +9,12 @@ let
 
     # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
     sleep 5 && firefox --kiosk http://localhost:8058/ &
+    unclutter -idle 0 &
   '';
 
   inherit (pkgs) writeScript;
 in {
-  environment.systemPackages = [ pkgs.firefox ];
+  environment.systemPackages = [ pkgs.firefox pkgs.unclutter ];
   boot.kernelParams = [ "quiet" ];
   boot.loader.timeout = lib.mkForce 1;
   boot.plymouth.enable = true;
