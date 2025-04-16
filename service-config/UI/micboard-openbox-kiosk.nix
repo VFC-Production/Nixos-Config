@@ -9,7 +9,9 @@ let
 
     # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
     sleep 5 && firefox --kiosk http://localhost:8058/ &
-    unclutter -idle 0 &
+    unclutter -idle 30 &
+    xset -dpms &
+    xset s off &
   '';
 
   inherit (pkgs) writeScript;
